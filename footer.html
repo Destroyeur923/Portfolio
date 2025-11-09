@@ -1,0 +1,68 @@
+<!-- footer.html -->
+<footer class="site-footer">
+    <div class="footer-bottom">
+        <p>&copy; 2021 - 2025 Thibaud Margotteau. Tous droits réservés.</p>
+        <p class="footer-credit">Conçu et développé avec passion 💙</p>
+    </div>
+</footer>
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.site-footer {
+    font-family: 'Arial', sans-serif;
+    background: rgba(15, 15, 30, 0.95);
+    border-top: 2px solid rgba(0, 212, 255, 0.3);
+    padding: 2rem 0;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    width: 100vw;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+}
+
+.site-footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #00d4ff, #533483, #00d4ff, transparent);
+    animation: borderFlow 3s linear infinite;
+}
+
+@keyframes borderFlow {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+.footer-bottom {
+    text-align: center;
+    padding: 0 5%;
+}
+
+.footer-bottom p {
+    color: #b0b0b0;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+}
+
+.footer-credit {
+    font-size: 0.9rem;
+    color: #00d4ff;
+}
+</style>
+
+<script>
+// Script pour charger le footer (à mettre dans chaque page HTML)
+document.addEventListener('DOMContentLoaded', function() {
+    // Ce script est inclus dans footer.html, pas besoin de le dupliquer
+});
+</script>

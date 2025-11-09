@@ -1,0 +1,591 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recyclage Cigarette éléctronique jetable - Portfolio</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            color: #fff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 1.5rem 5%;
+            background: rgba(26, 26, 46, 0.9);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            background: linear-gradient(90deg, #00d4ff, #533483, #00ffaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1rem;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #00d4ff;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #00d4ff;
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: #00d4ff;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #00d4ff;
+            text-decoration: none;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .back-button:hover {
+            gap: 1rem;
+            text-shadow: 0 0 10px #00d4ff;
+        }
+
+        .project-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 8rem 5% 5rem 5%;
+        }
+
+        .project-header {
+            margin-bottom: 3rem;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .project-title {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 3.5rem;
+            font-weight: 900;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(90deg, #00d4ff, #533483, #00ffaa);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: 0.1rem;
+        }
+
+        .project-badges {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-bottom: 1.5rem;
+        }
+
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.7rem 1.5rem;
+            border-radius: 25px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .badge-scolaire {
+            background: rgba(233, 69, 96, 0.2);
+            border: 2px solid #e94560;
+            color: #e94560;
+        }
+
+        .badge-personnel {
+            background: rgba(0, 212, 255, 0.2);
+            border: 2px solid #00d4ff;
+            color: #00d4ff;
+        }
+
+        .badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(0, 212, 255, 0.3);
+        }
+
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            color: #b0b0b0;
+            font-size: 1rem;
+        }
+
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-item strong {
+            color: #00d4ff;
+        }
+
+        .video-container {
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 25px;
+            padding: 2rem;
+            margin-bottom: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5),
+                        0 0 40px rgba(0, 212, 255, 0.15);
+            transition: all 0.3s;
+            animation: slideUp 1s ease-out 0.3s backwards;
+        }
+
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .video-container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.6),
+                        0 0 50px rgba(0, 212, 255, 0.25);
+            border-color: rgba(0, 212, 255, 0.3);
+        }
+
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* Ratio 16:9 */
+            background: linear-gradient(135deg, #533483, #00d4ff, #00ffaa);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 212, 255, 0.3);
+        }
+
+        .video-wrapper::before {
+            content: '';
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.1) 0%, transparent 50%);
+            animation: shimmer 3s ease-in-out infinite;
+            z-index: 1;
+        }
+
+        @keyframes shimmer {
+            0%, 100% { transform: translateX(-100%) rotate(45deg); }
+            50% { transform: translateX(100%) rotate(45deg); }
+        }
+
+        .video-wrapper iframe,
+        .video-wrapper video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            color: rgba(255, 255, 255, 0.8);
+            z-index: 2;
+        }
+        .video-wrapper img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* remplissage sans déformation */
+    object-position: center; /* centre l’image dans le cadre */
+    border-radius: 15px;
+    border: none;
+    z-index: 0;
+}
+
+
+        .description-section {
+            background: rgba(26, 26, 46, 0.6);
+            border-radius: 25px;
+            padding: 3rem;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            animation: slideUp 1s ease-out 0.6s backwards;
+        }
+
+        .description-section h2 {
+            font-family: 'Orbitron', sans-serif;
+            font-size: 2rem;
+            color: #00d4ff;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+
+        .description-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(90deg, #00d4ff, #533483);
+            border-radius: 2px;
+        }
+
+        .description-section h3 {
+            color: #00ffaa;
+            font-size: 1.5rem;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .description-section p {
+            color: #d0d0d0;
+            line-height: 1.9;
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .description-section ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 1.5rem;
+        }
+
+        .description-section li {
+            color: #d0d0d0;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            padding-left: 2rem;
+            position: relative;
+        }
+
+        .description-section li::before {
+            content: '▹';
+            position: absolute;
+            left: 0;
+            color: #00d4ff;
+            font-size: 1.5rem;
+        }
+
+        .tech-stack {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 2rem;
+        }
+
+        .tech-tag {
+            padding: 0.6rem 1.3rem;
+            background: rgba(0, 212, 255, 0.1);
+            border: 1px solid #00d4ff;
+            border-radius: 20px;
+            color: #00d4ff;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+            cursor: default;
+        }
+
+        .tech-tag:hover {
+            background: rgba(0, 212, 255, 0.2);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 212, 255, 0.4);
+        }
+
+        .highlight-box {
+            background: rgba(83, 52, 131, 0.2);
+            border-left: 4px solid #533483;
+            padding: 1.5rem;
+            margin: 2rem 0;
+            border-radius: 10px;
+        }
+
+        .highlight-box p {
+            margin-bottom: 0;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                right: -100%;
+                top: 70px;
+                flex-direction: column;
+                background: rgba(26, 26, 46, 0.98);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                padding: 2rem 0;
+                box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .menu-toggle {
+                display: flex;
+            }
+
+            .project-title {
+                font-size: 2.5rem;
+            }
+
+            .video-container,
+            .description-section {
+                padding: 1.5rem;
+            }
+
+            .description-section h2 {
+                font-size: 1.6rem;
+            }
+
+            .project-meta {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html" class="logo">Thibaud Margotteau</a>
+        <ul class="nav-links" id="navLinks">
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="index.html#projects">Projets</a></li>
+            <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="menu-toggle" id="menuToggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <div class="project-container">
+        <a href="index.html" class="back-button">← Retour aux projets</a>
+
+        <div class="project-header">
+            <h1 class="project-title">Recyclage Cigarette éléctronique jetable</h1>
+            
+            <div class="project-badges">
+                <span class="badge badge-scolaire">Personnel</span>
+                <!-- OU -->
+                <!-- <span class="badge badge-personnel">Personnel</span> -->
+            </div>
+
+            <div class="project-meta">
+                <div class="meta-item">
+                    <strong>Date :</strong>
+                    <span>2023</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Durée :</strong>
+                    <span>1 mois</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Équipe :</strong>
+                    <span>1 personne</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="video-container">
+            <div class="video-wrapper">
+                <!-- Remplacez par votre vidéo -->
+                <!-- Option 1: YouTube -->
+                <!-- <iframe src="https://www.youtube.com/embed/VOTRE_VIDEO_ID" allowfullscreen></iframe> -->
+                
+                <!-- Option 2: Vidéo locale -->
+                <!--<video controls>
+                    <source src="\videos\Final_video_ddos_N2.mp4" type="video/mp4">
+                </video> -->
+                
+                <!-- Placeholder temporaire -->
+                <!--<div class="video-placeholder">
+                    🎥 Insérez votre vidéo ici
+                </div>-->
+                <img src="Red Abstract Income Money YouTube Thumbnail.png" alt="">
+            </div>
+        </div>
+<a href="compte_rendu_batt_watermark.pdf" target="_blank" style="
+    display: block;
+    background: rgba(26, 26, 46, 0.6);
+    border-radius: 20px;
+    padding: 1.5rem 2rem;
+    margin-bottom: 3rem;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    animation: slideUp 1s ease-out 0.45s backwards;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 255, 0.15);
+    text-decoration: none;
+" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 25px 70px rgba(0, 0, 0, 0.6), 0 0 50px rgba(0, 212, 255, 0.25)'; this.style.borderColor='rgba(0, 212, 255, 0.3)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(0, 212, 255, 0.15)'; this.style.borderColor='rgba(255, 255, 255, 0.1)'">
+    <span style="font-size: 1.1rem; color: #00d4ff; font-weight: 700;">
+        Lire le compte rendu (10 pages) 📥
+    </span>
+</a>
+
+<div class="description-section">
+    <h2>Description du Projet</h2>
+    <p>
+        Ces dernières années, les <strong>cigarettes électroniques jetables</strong>, aussi appelées <strong>"puffs"</strong>, 
+        connaissent un énorme succès, notamment chez les plus jeunes.Elles sont faciles d’accès, colorées et souvent aromatisées. 
+        Elles sont devenues un véritable phénomène de mode. Cependant, derrière cette apparente simplicite
+        se cache un <strong>véritable désastre écologique</strong>.
+    </p>
+    <p>
+        Chaque "puff" contient une <strong>batterie au lithium</strong>, un matériau rare et polluant à extraire.  
+        Or, ces dispositifs sont conçus pour être jetés après une seule utilisation, ce qui entraîne l'abandon
+        de centaines millions de petites batteries chaque mois dans le monde entier. Très peu sont recyclées, finissant souvent dans la nature 
+        ou les décharges, où elles peuvent libérer des substances nocives pour l’environnement.
+    </p>
+
+    <h3>Objectif du Projet</h3>
+    <p>
+        Face à cela, j’ai voulu explorer une approche plus responsable : <strong>donner une seconde vie à ces batteries</strong>.  
+        Le but de ce projet est de montrer qu’il est possible de <strong>récupérer et réutiliser</strong> les composants internes 
+        d’une puff, notamment sa batterie, afin de la transformer en une mini batterie exeterne.
+    </p>
+
+    <h3>Étapes Principales</h3>
+    <ul>
+        <li>Analyse du fonctionnement d’une puff et identification des composants réutilisables.</li>
+        <li>Extraction et test de la batterie lithium.</li>
+        <li>Intégration d'un <strong>module de charge USB</strong> pour créer une batterie portable fonctionnelle.</li>
+        <li>Impression d’un boîtier simple pour protéger le montage et le rendre portatif.</li>
+    </ul>
+
+    <h3>Technologies</h3>
+    <div class="tech-stack">
+        <span class="tech-tag">Batterie </span>
+        <span class="tech-tag">Soudure</span>
+        <span class="tech-tag">Impression 3D</span>
+    </div>
+
+    <h3>Défis et Enseignements</h3>
+    <p>
+        Le principal défi a été d’aborder ce projet sous un angle <strong>écologique et responsable</strong> : 
+        comprendre les risques liés aux batteries lithium tout en cherchant à valoriser un déchet.  
+        Cette expérience m’a surtout permis de m'initier à la soudure avec de l'<strong>électronique de base</strong>.
+    </p>
+
+    <div class="highlight-box">
+        <p>
+            <strong>Point clé :</strong> Illustration de l’importance d’une approche plus éthique et écologique 
+            de la technologie : apprendre à réparer, recycler et réutiliser plutôt que jeter.
+        </p>
+    </div>
+
+    <h3>Remarques et Sécurité</h3>
+<p>
+    Ce projet est réalisé <strong>uniquement à but éducatif</strong>.  
+    Les batteries récupérées dans les puffs ne respectent <strong>aucune norme de sécurité</strong> et 
+    ne doivent pas être utilisées dans la vie quotidienne.  
+    Leur réutilisation comporte des risques de <strong>surchauffe ou d’incendie</strong>.  
+    L’objectif ici est d’<strong>observer, comprendre et sensibiliser</strong> à l’impact écologique 
+    de ces produits jetables.
+</div>
+    <script>
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
+
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html>
