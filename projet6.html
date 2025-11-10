@@ -500,59 +500,64 @@
 <div class="description-section">
     <h2>Description du Projet</h2>
     <p>
-        Étant amateur de cinéma, j’ai eu envie de créer mon propre 
-        <strong>site de streaming vidéo</strong>.  
-        Au départ, je voulais simplement <strong>découvrir l’outil</strong> et voir ce qu’il permettait de faire,  
-        mais je me suis vite pris au jeu et j’ai fini par créer quelque chose de bien plus sérieux, 
-        presque comme un vrai site de streaming.
+        Inspiré par les récentes lunettes<strong>Ray-Ban Meta</strong>, 
+        j'ai voulu comprendre le fonctionnement interne de ces lunettes connectées en créant mon propre prototype. 
+        L'objectif n'était pas de concurrencer ce produit commercial, mais de démontrer qu'il est possible 
+        de reproduire leurs fonctionnalités principales avec du <strong>matériel accessible</strong> et un <strong>budget modeste</strong>.
     </p>
 
-    <h3>Première Version</h3>
+    <h3>Le Système</h3>
     <p>
-        J’ai commencé avec <strong>Google Sites</strong>, un outil très simple en <em>drag and drop</em>.  
-        J’ai pu concevoir un site au <strong>design moderne</strong> sans écrire une seule ligne de code, 
-        avec une page d’accueil, des catégories et une présentation soignée des films.  
-        C’était ma première vraie approche de la création de site, et j’étais assez fier du résultat.
+        Le dispositif se présente sous la forme d'un <strong>module compact</strong> fixé sur la branche d'une paire de lunettes. 
+        Au cœur du système : un <strong>Raspberry Pi Zero W</strong> couplé à une <strong>caméra CSI</strong> 
+        capable d'enregistrer des vidéos en <strong>720p à 30 fps</strong>. Le boîtier a été entièrement conçu sur <strong>SolidWorks</strong> 
+        puis imprimé en <strong>3D avec du PLA</strong>.
     </p>
 
-    <h3>Deuxième Version</h3>
+    <h3>Contrôle et Transfert</h3>
     <p>
-        En découvrant le <strong>HTML</strong> et le <strong>CSS</strong>, j’ai voulu tout refaire moi-même.  
-        Je me suis lancé dans une version “faite maison”, mais j’ai vite rencontré des problèmes comme :  
-        le <strong>responsive</strong> qui ne suivait pas, les images se qui superposent, 
-        et certains textes partaient dans tous les sens.  
-        Malgré tout, ça m’a vraiment aidé à comprendre la logique du code et les bases du front-end.
+        Le système fonctionne en mode <strong>totalement sans fil (sauf batterie)</strong>. Une <strong>interface web</strong> 
+        accessible depuis n'importe quel appareil connecté au même réseau Wi-Fi permet de démarrer et d'arrêter 
+        l'enregistrement à distance. Les vidéos sont automatiquement converties en <strong>MP4</strong> 
+        puis envoyées sur un <strong>canal Telegram privé</strong>, éliminant ainsi le besoin de retirer 
+        physiquement la carte SD.
     </p>
 
-    <h3>Troisième Version</h3>
+    <h3>Défis Techniques</h3>
+    <ul>
+        <li><strong>Limitations matérielles</strong> : Le Raspberry Pi Zero W (512 Mo RAM, CPU 1 GHz) 
+        ne permettait pas d'encoder en 1080p sans ralentissements importants, d'où le choix du 720p.</li>
+        <li><strong>Gestion thermique</strong> : Le processeur atteint 78°C après quelques minutes d'enregistrement.</li>
+        <li><strong>Compatibilité logicielle</strong> : Les bibliothèques caméra (raspivid, libcamera-vid, rpicam-vid) 
+        varient selon les versions de l'OS.</li>
+        <li><strong>Conception mécanique</strong> : Trois prototypes de boîtier ont été nécessaires avant d'obtenir 
+        un assemblage parfait.</li>
+    </ul>
+
+    <h3>Comparaison Ray-Ban Meta</h3>
     <p>
-        J’ai ensuite réalisé une version plus <strong>simpliste</strong>, avec juste une 
-        <strong>page d’accueil</strong> affichant les derniers films, 
-        une <strong>page par catégorie</strong>, et une page dédiée pour chaque film 
-        avec son <strong>affiche</strong> et son <strong>synopsis</strong>.  
-        Le seul problème, c’est qu’à l’époque je ne connaissais pas encore les 
-        <strong>bases de données</strong>, donc ajouter ou modifier des films devenait vite répétitif.
+        Mon prototype coûte <strong>25€</strong> (sans batterie) contre <strong>379€</strong> pour les Ray-Ban Meta, 
+        soit <strong>93% moins cher</strong>. Bien que techniquement inférieur (720p30 vs 1080p60, pas d'audio intégré), 
+        il offre deux avantages majeurs : un <strong>code open source modifiable</strong> et un <strong>contrôle total 
+        sur les données</strong>. Chaque composant est également facilement remplaçable 
+        et réparable individuellement.
     </p>
 
-    <h3>Et après ?</h3>
-    <p>
-        J’aimerais un jour refaire une <strong>quatrième version</strong> du site, 
-        avec un design proche de ma première version, mais cette fois en y intégrant 
-        une <strong>base de données</strong> et un vrai <strong>backend</strong>.  
-        Ça permettrait de gérer les films dynamiquement, d’ajouter des fonctionnalités de recherche, 
-        et de rendre le tout beaucoup plus vivant.
-    </p>
     <h3>Technologies</h3>
     <div class="tech-stack">
-        <span class="tech-tag">Google Site</span>
-        <span class="tech-tag">HTML</span>
-        <span class="tech-tag">CSS</span>
-        <span class="tech-tag">Visual Studio Code</span>
+        <span class="tech-tag">Raspberry Pi Zero W</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">Telegram API</span>
+        <span class="tech-tag">SolidWorks</span>
+        <span class="tech-tag">Impression 3D (PLA)</span>
     </div>
+
     <div class="highlight-box">
         <p>
-            <strong>Point clé :</strong> savoir apprendre de ses erreurs, s’améliorer à chaque fois, 
-        prendre conscience de la difficulté d’un projet et ne pas hésiter à faire plus simple pour faire mieux.
+            <strong>Point clé :</strong> Ce projet démontre qu'il est possible de créer des objets connectés 
+            sophistiqués sans investissement massif. La persévérance face aux problèmes techniques, 
+            l'acceptation des compromis (720p au lieu de 1080p).
         </p>
     </div>
 </div>
